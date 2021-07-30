@@ -1,0 +1,31 @@
+#!/bin/bash
+
+#sync
+repo init -q --no-repo-verify --depth=1 -u https://github.com/NusantaraProject-ROM/android_manifest -b 11 -g default,-device,-mips,-darwin,-notdefault
+repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8
+
+git clone --depth=1 https://github.com/MiBengal-Development/Device_xiaomi_J --single-branch -b 11 device/xiaomi/juice
+git clone --depth=1 https://github.com/I-n-o-k/prebuilt_vendor_juice --single-branch -b 11 vendor/xiaomi/juice
+git clone --depth=1 https://github.com/MiBengal-Development/android_kernel_xiaomi_bengal  --single-branch -b 11.0 kernel/xiaomi/juice
+git clone --depth=1 https://github.com/GengKapak/GengKapak-clang --single-branch -b 13 prebuilts/clang/host/linux-x86/clang-gengkapak
+
+clear
+
+#build
+. build/envsetup.sh
+lunch nad_juice-userdebug
+export CCACHE_DIR=/tmp/ccache
+export CCACHE_EXEC=$(which ccache)
+export USE_CCACHE=1
+ccache -M 20G
+ccache -o compression=true
+ccache -z
+
+mka nad -j8 &
+sleep 90m
+kill %1
+ccache -s
+
+#mka nad -j8
+
+time rclone copy /tmp/rom/out/target/product/juice/Nusantara*.zip inok:juice -P

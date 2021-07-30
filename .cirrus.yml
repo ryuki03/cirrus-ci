@@ -1,0 +1,33 @@
+env:
+    CIRRUS_CLONE_DEPTH: 1
+    CIRRUS_WORKING_DIR: "/tmp/ci"
+    rclone_config: "ENCRYPTED[81f2ea42a1bb72f5514f01604e25bb9057eb0b6f1b0f5a18434dd7175df07619a880e75ecb9597e10e69fba44553fe84]"
+
+task:
+    name: nusantara
+    timeout_in: 120m
+    container:
+      image: inok2341/builder:latest
+      cpu: 8
+      memory: 32G      
+
+    rclone_setup_script:
+      - mkdir -p ~/.config/rclone
+      - echo "$rclone_config" > ~/.config/rclone/rclone.conf
+    download_ccache_background_script:
+      - curl -s "https://api.telegram.org/bot${bot_api}/sendmessage" --data "text=Download ccache at $(date)&chat_id=${tg_id}&parse_mode=html"
+      - df -h && free -h && nproc && cat /etc/os* && env
+      - rclone copy inok:nusantara/ccache.tar.gz /tmp -P
+      - cd /tmp
+      - time tar xf ccache.tar.gz
+      - rm -rf ccache.tar.gz
+      - mkdir -p /tmp/rom
+      - cd /tmp/rom
+    monitor_background_script:
+      - ./monitor
+    building_script:
+      - ./build
+      - time rclone copy /tmp/rom/out/error.log inok: -P
+    compress_ccache_script:    
+      - ./upload
+
