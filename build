@@ -30,5 +30,3 @@ kill %1
 ccache -s
 
 #mka nad -j8
-
-time rclone copy /tmp/rom/out/target/product/juice/Nusantara*.zip inok:juice -P
