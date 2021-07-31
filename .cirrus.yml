@@ -27,7 +27,6 @@ task:
       - ./monitor
     building_script:
       - ./build
-      - time rclone copy /tmp/rom/out/error.log inok: -P
     compress_ccache_script:    
       - ./upload
 
