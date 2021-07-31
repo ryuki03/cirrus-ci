@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 cd /tmp
 
 curl -s "https://api.telegram.org/bot${bot_api}/sendmessage" --data "text=Compress ccache start at $(date)&chat_id=${tg_id}&parse_mode=html"
@@ -12,6 +13,9 @@ com ()
 time com ccache 1
 
 curl -s "https://api.telegram.org/bot${bot_api}/sendmessage" --data "text=Compress ccache done at $(date)&chat_id=${tg_id}&parse_mode=html"
+
+cd /tmp
+time rclone copy /tmp/rom/out/target/product/juice/Nusantara*.zip inok:juice -P
 
 cd /tmp
 
