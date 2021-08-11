@@ -15,10 +15,10 @@ time com ccache 1
 curl -s "https://api.telegram.org/bot${bot_api}/sendmessage" --data "text=Compress ccache done at $(date)&chat_id=${tg_id}&parse_mode=html"
 
 cd /tmp
-time rclone copy /tmp/rom/out/target/product/juice/Nusantara*.zip inok:juice -P
+time rclone copy /tmp/rom/out/target/product/juice/Superior*.zip rcloneidp:juice -P
 
 cd /tmp
 
 curl -s "https://api.telegram.org/bot${bot_api}/sendmessage" --data "text=Uploading ccache at $(date)&chat_id=${tg_id}&parse_mode=html"
-time rclone copy ccache.tar.gz inok:nusantara -P
+time rclone copy ccache.tar.gz rcloneidp:superior -P
 curl -s "https://api.telegram.org/bot${bot_api}/sendmessage" --data "text=Upload ccache done at $(date)&chat_id=${tg_id}&parse_mode=html"
