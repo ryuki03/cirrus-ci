@@ -8,7 +8,7 @@ repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync 
 
 git clone --depth=1 https://github.com/indraadp/device_xiaomi_juice -b superior-os device/xiaomi/juice
 git clone --depth=1 https://github.com/I-n-o-k/prebuilt_vendor_juice --single-branch -b 11 vendor/xiaomi/juice
-git clone --depth=1 https://github.com/indraadp/stormbreaker_kernel_juice  --single-branch -b main kernel/xiaomi/juice
+git clone --depth=1 https://github.com/indraadp/stormbreaker_kernel_juice  --single-branch -b test kernel/xiaomi/juice
 git clone --depth=1 https://github.com/GengKapak/GengKapak-clang --single-branch -b 12 prebuilts/clang/host/linux-x86/clang-gengkapak
 rm -rf platform_testing && git clone https://github.com/indraadp/android_platform_testing platform_testing -b eleven
 
