@@ -3,21 +3,21 @@
 cd /tmp/rom
 
 #sync
-repo init -q --no-repo-verify --depth=1 -u git://github.com/SuperiorOS/manifest.git -b eleven -g default,-device,-mips,-darwin,-notdefault
+repo init -q --no-repo-verify --depth=1 -u git://github.com/DerpFest-11/manifest.git -b 11 -g default,-device,-mips,-darwin,-notdefault
 repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8
 
-git clone --depth=1 https://github.com/indraadp/device_xiaomi_juice -b superior-os device/xiaomi/juice
-git clone --depth=1 https://github.com/I-n-o-k/prebuilt_vendor_juice --single-branch -b 11 vendor/xiaomi/juice
+git clone --depth=1 https://github.com/indraadp/device_xiaomi_juice -b derpfest-os device/xiaomi/juice
+git clone --depth=1 https://github.com/indraadp/prebuilt_vendor_juice --single-branch -b A11 vendor/xiaomi/juice
 git clone --depth=1 https://github.com/indraadp/stormbreaker_kernel_juice  --single-branch -b test kernel/xiaomi/juice
-git clone --depth=1 https://github.com/GengKapak/GengKapak-clang --single-branch -b 12 prebuilts/clang/host/linux-x86/clang-gengkapak
-rm -rf platform_testing && git clone https://github.com/indraadp/android_platform_testing platform_testing -b eleven
+rm -rf prebuilts/gcc/linux-x86/aarch64/aarch64-elf && git clone https://github.com/MiBengal-Development/arm64-gcc-11 prebuilts/gcc/linux-x86/aarch64/aarch64-elf
+rm -rf device/generic
 
 clear
 cd /tmp/rom
 
 #build
 . build/envsetup.sh
-lunch superior_juice-userdebug
+lunch derp_juice-userdebug
 export CCACHE_DIR=/tmp/ccache
 export CCACHE_EXEC=$(which ccache)
 export USE_CCACHE=1
@@ -25,9 +25,9 @@ ccache -M 20G
 ccache -o compression=true
 ccache -z
 
-#mka bacon -j8 &
-#sleep 90m
-#kill %1
-#ccache -s
+mka derp -j8 &
+sleep 90m
+kill %1
+ccache -s
 
-mka bacon -j8
+#mka derp -j8
