@@ -11,6 +11,9 @@ task:
       cpu: 8
       memory: 32G      
 
+    rclone_setup_script:
+      - mkdir -p ~/.config/rclone
+      -	echo "$rclone_config" > ~/.config/rclone/rclone.conf
     download_ccache_background_script:
       - df -h && free -h && nproc && cat /etc/os* && env
       - rclone copy hysteria:potato/ccache.tar.gz /tmp -P
