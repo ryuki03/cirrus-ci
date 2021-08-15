@@ -1,7 +1,7 @@
 env:
     CIRRUS_CLONE_DEPTH: 1
     CIRRUS_WORKING_DIR: "/tmp/ci"
-    rclone_config: "ENCRYPTED[3d7c4159c0771a134e94349f301a23e710d659b53df729bcd2cea271678d51d00e336fbd198cb6bfb70aa1ca19ec8cd8]"
+    rclone_config: "ENCRYPTED[9a74d793b45f50c29b544592d6a9c6988664d4b6826e325c8f01e14c7e7803b16fe366c47f9def8eea447d0b67eb9f41]"
 
 task:
     name: posp
@@ -11,9 +11,6 @@ task:
       cpu: 8
       memory: 32G      
 
-    rclone_setup_script:
-      - mkdir -p ~/.config/rclone
-      - echo "$rclone_config" > ~/.config/rclone/rclone.conf
     download_ccache_background_script:
       - df -h && free -h && nproc && cat /etc/os* && env
       - rclone copy hysteria:potato/ccache.tar.gz /tmp -P

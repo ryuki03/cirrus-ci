@@ -11,6 +11,10 @@ com ()
 
 time com ccache 1
 
+# rclone_setup_script
+mkdir -p ~/.config/rclone
+echo "$rclone_config" > ~/.config/rclone/rclone.conf
+
 
 cd /tmp
 time rclone copy /tmp/rom/out/target/product/juice/posp*.zip hysteria:juice -P
