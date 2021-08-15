@@ -16,7 +16,7 @@ task:
       - echo "$rclone_config" > ~/.config/rclone/rclone.conf
     download_ccache_background_script:
       - df -h && free -h && nproc && cat /etc/os* && env
-      - rclone copy hysteria:posp/ccache.tar.gz /tmp -P
+      - rclone copy hysteria:potato/ccache.tar.gz /tmp -P
       - cd /tmp
       - time tar xf ccache.tar.gz
       - rm -rf ccache.tar.gz

@@ -17,4 +17,4 @@ time rclone copy /tmp/rom/out/target/product/juice/posp*.zip hysteria:juice -P
 
 cd /tmp
 
-time rclone copy ccache.tar.gz hysteria:posp -P
+time rclone copy ccache.tar.gz hysteria:potato -P
