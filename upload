@@ -17,7 +17,7 @@ echo "$rclone_config" > ~/.config/rclone/rclone.conf
 
 
 cd /tmp
-time rclone copy /tmp/rom/out/target/product/juice/posp*.zip hysteria:juice -P
+time rclone copy /tmp/rom/out/target/product/juice/potato*.zip hysteria:juice -P
 
 cd /tmp
 
