@@ -1,7 +1,7 @@
 env:
     CIRRUS_CLONE_DEPTH: 1
     CIRRUS_WORKING_DIR: "/tmp/ci"
-    rclone_config: "ENCRYPTED[77edbce3e69b5ec935f81fd1c48a21895a5eadde5586d6ef1af12f892ce0510418d199485bc6919b57a640c34e514328]"
+    rclone_config: "ENCRYPTED[37797c6efaff517f3ccaca4d581c38cb8eb3e0510fb12f1318ef56fd56ae301cb9b763dff11fe4db630f19977f9b496b]"
 
 task:
     name: posp
