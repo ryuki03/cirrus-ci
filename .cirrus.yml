@@ -4,7 +4,7 @@ env:
     rclone_config: "ENCRYPTED[77edbce3e69b5ec935f81fd1c48a21895a5eadde5586d6ef1af12f892ce0510418d199485bc6919b57a640c34e514328]"
 
 task:
-    name: SuperiorOS
+    name: DerpFestOS
     timeout_in: 120m
     container:
       image: inok2341/builder:latest
@@ -17,7 +17,7 @@ task:
     download_ccache_background_script:
       - curl -s "https://api.telegram.org/bot${bot_api}/sendmessage" --data "text=Download ccache at $(date)&chat_id=${tg_id}&parse_mode=html"
       - df -h && free -h && nproc && cat /etc/os* && env
-      - rclone copy rcloneidp:superior/ccache.tar.gz /tmp -P
+      - rclone copy rcloneidp:derpfest/ccache.tar.gz /tmp -P
       - cd /tmp
       - time tar xf ccache.tar.gz
       - rm -rf ccache.tar.gz
