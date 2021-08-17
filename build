@@ -8,7 +8,7 @@ repo init -q --no-repo-verify --depth=1 -u https://github.com/PotatoProject/mani
 # Sync
 repo sync -c -j$(nproc --all)  --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8
 
-git clone --depth=1 https://github.com/ryuKizuha/xiaomi_device_jui --single-branch -b posp device/xiaomi/juice
+git clone --depth=1 https://github.com/ryuki03/xiaomi_device_jui --single-branch -b posp device/xiaomi/juice
 git clone --depth=1 https://github.com/I-n-o-k/prebuilt_vendor_juice --single-branch -b 11 vendor/xiaomi/juice
 git clone --depth=1 https://github.com/MiBengal-Development/android_kernel_xiaomi_bengal  --single-branch -b 11.0 kernel/xiaomi/juice
 rm -rf prebuilts/gcc/linux-x86/aarch64/aarch64-elf && git clone https://github.com/MiBengal-Development/arm64-gcc-11 prebuilts/gcc/linux-x86/aarch64/aarch64-elf && sudo mv /root /root.bak
@@ -27,9 +27,9 @@ ccache -M 20G
 ccache -o compression=true
 ccache -z
 
-# brunch potato_juice-userdebug &
-# sleep 90m
-# kill %1
-# ccache -s
+brunch potato_juice-userdebug &
+sleep 90m
+kill %1
+ccache -s
 
-brunch potato_juice-userdebug
+# brunch potato_juice-userdebug
